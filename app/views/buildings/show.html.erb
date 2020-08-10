@@ -4,6 +4,12 @@
 On this page, a user should be able to see how much total rent that building is making based on all 
 the companies that have rented offices in that building -->
 
+<h3>Address: <%= @building.address %></h3>
+<h3>Country: <%= @building.country %></h3>
+<h3>Rent Per Floor: <%= @building.rent_per_floor %></h3>
+<h3>No. of Floors: <%= @building.number_of_floors %></h3>
+
+
 <h3>Companies:</h3>
 <ul>
     <% @building.companies.each do |company| %>
@@ -13,4 +19,5 @@ the companies that have rented offices in that building -->
 
 <h3>Rent: $<%= @building.rent_per_floor * @building.companies.count %></h3>
 
+<h4><%= link_to "Edit Building", edit_building_path(@building)%></h4>
 
