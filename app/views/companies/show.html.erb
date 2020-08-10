@@ -10,7 +10,7 @@
 <h2> Employees </h2>
 <ul>
     <% @company.employees.each do |employee| %>
-    <li> <%= employee.name %> </li>
+    <li> <%= link_to employee.name, employee_path(employee) %> </li>
     <% end %>
 </ul>
 

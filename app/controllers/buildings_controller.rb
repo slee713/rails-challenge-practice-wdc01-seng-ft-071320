@@ -14,6 +14,11 @@ class BuildingsController < ApplicationController
     def update
         @building = Building.find(params[:id])
         @building.update(params.require(:building).permit(:name, :country, :address, :rent_per_floor, :number_of_floors))
-        redirect_to building_path(@building)
+        if @building.valid?
+            @building.save
+            redirect_to building_path(@building)
+        else 
+            render :edit
+        end
     end
 end

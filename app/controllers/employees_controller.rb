@@ -5,12 +5,28 @@ class EmployeesController < ApplicationController
     end
 
     def create 
-        employee = Employee.create(params.require(:employee).permit(:name, :title, :company_id))
-        redirect_to company_path(employee.company_id)
+        @employee = Employee.new(employee_params)
+        if !@employee.valid?
+            render :new
+        else 
+            @employee.save
+            redirect_to company_path(@employee.company_id)
+        end
     end
 
-    def delete 
-
+    def destroy 
+        @company = Employee.find(params[:id]).company
+        Employee.destroy(params[:id])
+        redirect_to company_path(@company)
     end
 
+    def show
+        @employee = Employee.find(params[:id])
+    end
+
+    private 
+    
+    def employee_params
+        params.require(:employee).permit(:name, :title, :company_id)
+    end
 end
