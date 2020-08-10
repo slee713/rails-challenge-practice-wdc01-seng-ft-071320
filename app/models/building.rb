@@ -1,9 +1,12 @@
 class Building < ApplicationRecord
+  has_many :offices
+  has_many :companies, through: :offices
+  validates :name, :country, :address, :rent_per_floor, :number_of_floors, presence: true
 
   def number_of_floors_available
     # Will not work until relationships and schema are corretly setup
 
-    all_floors = Array(1..self.number_of_floors)
+    all_floors = Array(1..self.number_of_floors) #[1, 2 ,3 ,5 , 6, 7, 8]
     self.offices.each do |office|
       all_floors.delete(office.floor)
     end
