@@ -1,0 +1,19 @@
+<h1> <%= @company.name %> </h1>
+
+<h2> Office </h2>
+<ul>
+<% @company.offices.each do |office| %>
+<li> <%= office.building.name + " - Floor:" + office.floor.to_s %> </li>
+<% end %>
+</ul>
+
+<h2> Employees </h2>
+<ul>
+    <% @company.employees.each do |employee| %>
+    <li> <%= employee.name %> </li>
+    <% end %>
+</ul>
+
+<h2> Rent: $<%= @company.total_rent %> </h2>
+
+<%= link_to "Add an Employee", new_employee_path %>
