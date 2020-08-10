@@ -13,7 +13,14 @@ class CompaniesController < ApplicationController
     end
 
     def create
-        #need to solve
+        byebug
     end
 
 end
+
+
+#Company.create(
+#     name: params[:company][:name],
+#     office_ids: params[:company][:offices][:id],
+#     office_floors: params[:company][:offices][:offices]
+# )
